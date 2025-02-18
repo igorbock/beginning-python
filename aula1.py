@@ -25,3 +25,33 @@
 #quinta_parte = numero_real / 5
 
 #print(f"A quinta parte do número {numero_real} é: {quinta_parte}")
+
+#Exercício 6
+#graus_celsius = float(input("Converta de Celsius para Fahrenheit: "))
+#conversao = graus_celsius * (9/5) + 32
+
+#print(f"A temperatura em Fahrenheit é: {conversao}")
+
+#Exercício 7
+#graus_farenheit = float(input("Converta de Farenheit para Celsius: "))
+#conversao = 5 * (graus_farenheit - 32) / 9
+
+#print(f"A temperatura em Celsius é: {conversao}")
+
+#Exercício 8
+#graus_kelvin = float(input("Converta de Kelvin para Celsius: "))
+#conversao = graus_kelvin - 273.15
+
+#print(f"A temperatura em Celsius é: {conversao}")
+
+#Exercício 9
+#graus_celsius = float(input("Converta de Celsius para Kelvin: "))
+#conversao = graus_celsius + 273.15
+
+#print(f"A temperatura em Kelvin é: {conversao}")
+
+#Exercício 10
+km_hora = float(input("Converta KM/H para M/S: "))
+conversao = km_hora / 3.6
+
+print(f"A velocidade em M/S é: {conversao}")
