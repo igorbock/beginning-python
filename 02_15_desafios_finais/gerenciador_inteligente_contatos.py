@@ -31,22 +31,44 @@
 # ]
 
 def organize_contacts(contact_list):
-    # Your solution here
-    
-    for item in contact_list:
-        valid_emails = filter(lambda x: x["email"].count("@") == 1 and len(x["email"].split("@")[0]) > 0 and len(x["email"].split("@")[1] and x["email"].split("@")[1].count(".") == 1), item)
-        item["email"] = map(lambda x: x.lower().trim(), valid_emails)
     # 1. Create helper functions for validation
-    # - Function to validate email format
-    
-    # - Function to clean and validate phone numbers
-    
+
+    # Function to validate email format
+    def is_valid_email(email):
+        return '@' in email and '.' in email and ' ' not in email
+
+    # Function to clean and validate phone numbers
+    def clean_phone(phone):
+        digits = ''.join(filter(str.isdigit, phone))
+        return digits if len(digits) == 10 else None
+
     # 2. Process each contact
-    # - Clean email (lowercase) and phone (digits only)
-    # - Check if email and phone are valid
-    # - Check for duplicates
-    
+    cleaned_contacts = []
+    seen_emails = set()
+    seen_phones = set()
+
+    for contact in contact_list:
+        # Clean email (lowercase) and phone (digits only)
+        cleaned_email = contact['email'].lower()
+        cleaned_phone = clean_phone(contact['phone'])
+
+        # Check if email and phone are valid
+        if not is_valid_email(cleaned_email) or cleaned_phone is None:
+            continue
+
+        # Check for duplicates
+        if cleaned_email in seen_emails or cleaned_phone in seen_phones:
+            continue
+
+        seen_emails.add(cleaned_email)
+        seen_phones.add(cleaned_phone)
+        cleaned_contacts.append({
+            'name': contact['name'],
+            'email': cleaned_email,
+            'phone': cleaned_phone
+        })
+
     # 3. Return the clean contact list
-    pass
+    return cleaned_contacts
 
 print(organize_contacts([{"name": "John Doe", "email": "JOHN@email.com", "phone": "123-456-7890"}, {"name": "Jane Doe", "email": "jane@email.com", "phone": "123.456.7890"}, {"name": "Bob Smith", "email": "invalid.email", "phone": "12345"}]))
