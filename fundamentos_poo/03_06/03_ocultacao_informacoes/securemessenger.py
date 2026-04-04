@@ -43,7 +43,7 @@ class SecureMessenger:
         #       using: "\n".join(self.__messages)
         # TODO: If not logged in, return exactly: "Error: You must be logged in to view messages"
         if self.__is_logged_in:
-            if self.__messages.count == 0:
+            if not self.__messages:
                 return "No messages"
             else:
                 return "\n".join(self.__messages)
